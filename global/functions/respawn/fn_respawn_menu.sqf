@@ -29,6 +29,14 @@ disableSerialization;
 private _unit 			= _this param [0,objnull,[objnull]];
 private _respawnDelay = ["respawn_delay", _this param [3, 0, [0]]] call BIS_fnc_getParamValue;
 private _revive 		= _this param [4, false, [false]];
+private _currentTeam	= player getVariable ["vn_mf_db_player_group", "MikeForce"];
+private _isWhitelisted  = [player, _currentTeam] call para_g_fnc_db_check_whitelist;
+
+if (side player == east) then {
+	player setVariable ["vn_mf_db_player_group", "MikeForce", true]; 
+	["changedTeams", [player, "MikeForce"]] call para_g_fnc_event_dispatch;
+	endMission "ReservedDacCong";
+};
 
 // Originally meant to let handling of the respawn on revive scripts, currently for back compatibility reasons
 if (_unit getVariable ["BIS_fnc_showRespawnMenu_disable", false]) exitWith {};

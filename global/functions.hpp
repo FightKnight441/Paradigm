@@ -127,6 +127,12 @@ class para_g
 		class serialize_struct {};
 	};
 
+	class db
+	{
+		PARA_GLOBAL_PATH(\db);
+		class db_check_whitelist {};
+	};
+
 	class events
 	{
 		PARA_GLOBAL_PATH(\events);
