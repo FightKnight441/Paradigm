@@ -49,6 +49,8 @@ if (isNil "para_c_buildingMenu_categories") then
 	private _categories = [];
 	{
 		{
+			if (_x == "nv" && side player != east) then { continue };
+			
 			_categories pushBackUnique _x;
 		} forEach (_x select 1);
 	} forEach _allBuildables;

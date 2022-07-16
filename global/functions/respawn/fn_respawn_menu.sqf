@@ -31,11 +31,18 @@ private _respawnDelay = ["respawn_delay", _this param [3, 0, [0]]] call BIS_fnc_
 private _revive 		= _this param [4, false, [false]];
 private _currentTeam	= player getVariable ["vn_mf_db_player_group", "MikeForce"];
 private _isWhitelisted  = [player, _currentTeam] call para_g_fnc_db_check_whitelist;
+private _isDacCongWhitelisted  = [player, "DacCong"] call para_g_fnc_db_check_whitelist;
 
-if (side player == east) then {
+if (side player == east && !(_isDacCongWhitelisted)) then {
 	player setVariable ["vn_mf_db_player_group", "MikeForce", true]; 
 	["changedTeams", [player, "MikeForce"]] call para_g_fnc_event_dispatch;
 	endMission "ReservedDacCong";
+};
+
+if !(_isWhitelisted) then
+{
+	player setVariable ["vn_mf_db_player_group", "MikeForce", true]; 
+	["changedTeams", [player, "MikeForce"]] call para_g_fnc_event_dispatch;
 };
 
 // Originally meant to let handling of the respawn on revive scripts, currently for back compatibility reasons

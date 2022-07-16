@@ -16,6 +16,17 @@
 
 private _config = missionConfigFile >> "gamemode" >> "buildables";
 private _buildables = "true" configClasses _config;
+private _playerSide = side player;
+private _nvaBuildables = _buildables select { 
+	private _categories = getArray (_x >> "categories");
+	"nv" in _categories
+};
+
+if (_playerSide == east) then {
+	_buildables = _nvaBuildables;
+} else {
+	_buildables = _buildables - _nvaBuildables;
+};
 
 private _name = "";
 private _localizedName = "";

@@ -20,14 +20,20 @@ if !(_building getVariable ["para_s_respawn_id", []] isEqualTo []) exitWith {dia
 
 private _marker = createMarker [
     format ["building_respawn_%1", _building getVariable "para_s_building_id"],
-    getPos (_building getVariable "para_g_objects" select 0)
+    getPos _building
 ];
 
 _building setVariable ["para_s_respawn_marker", _marker];
 //Register as a respawn position
-_building setVariable ["para_s_respawn_id", 
-    [west, _marker] call BIS_fnc_addRespawnPosition
-];
+
+private _buildingSide = _building getVariable ["para_g_building_side", west];
+if (_buildingSide != east) then
+{
+    _building setVariable ["para_s_respawn_id", [west, _marker] call BIS_fnc_addRespawnPosition];
+    [independent, _marker] call BIS_fnc_addRespawnPosition;
+} else {
+    _building setVariable ["para_s_respawn_id", [east, _marker] call BIS_fnc_addRespawnPosition];
+};
 
 private _handler = ["onPlayerRespawn", [{
     params ["_handlerParams", "_eventParams"];

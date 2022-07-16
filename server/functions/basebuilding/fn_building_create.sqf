@@ -44,9 +44,18 @@ if (isNil "_buildingId") then
 //Give it a position, so we can query on it.
 private _buildingPos = _spawnInfo select 0 select 0;
 private _building = createSimpleObject ["a3\weapons_f\empty.p3d", AGLToASL _buildingPos];
+private _buildingCategories = getArray(_buildableConfig >> "categories");
+private _isEast = "nv" in _buildingCategories;
+
 _building setVariable ["para_s_building_id",_buildingId];
 _building setVariable ["para_g_buildclass", _buildingType, true];
 _building setVariable ["para_g_build_features", [_buildingType] call para_g_fnc_building_class_get_feature_configs, true];
+
+if (_isEast) then {
+	_building setVariable ["para_g_building_side", east];
+} else {
+	_building setVariable ["para_g_building_side", west];
+};
 
 //Turn the building into a supply source.
 private _internalSupplySource = [
