@@ -55,6 +55,7 @@ class CfgBuildingFeatures
 		onBuildingFunctional = "para_s_fnc_bf_respawn_on_functional";
 		onBuildingNonFunctional = "para_s_fnc_bf_respawn_on_nonfunctional";
 		onSuppliesChanged = "para_s_fnc_bf_respawn_on_supplies_changed";
+		onBuildingDeleted = "para_s_fnc_bf_respawn_on_deleted";
 	};
 
 	class supply_depot

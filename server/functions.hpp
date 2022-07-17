@@ -104,6 +104,7 @@ class para_s
 		PARA_SERVER_PATH(\building_features\respawn);
 		class bf_respawn_on_functional {};
 		class bf_respawn_on_nonfunctional {};
+		class bf_respawn_on_deleted {};
 		class bf_respawn_on_supplies_changed {};
 		class bf_respawn_register_respawn {};
 		class bf_respawn_unregister_respawn {};
