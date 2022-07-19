@@ -22,21 +22,7 @@ private _allHeadlessClientsWeighted = flatten (_allHeadlessClients apply {
 	[
 		owner _x, 
 		linearConversion [
-			25,
-			60,
-			_x getVariable ["para_s_dyn_fps", 0],
-			0,
-			1,
-			true
-		]
-	]
-});
-
-private _allPlayersWeighted = flatten (_allPlayers apply {
-	[
-		owner _x, 
-		linearConversion [
-			25,
+			10,
 			60,
 			_x getVariable ["para_s_dyn_fps", 0],
 			0,
@@ -48,4 +34,3 @@ private _allPlayersWeighted = flatten (_allPlayers apply {
 
 // update arrays
 missionNamespace setVariable ["para_s_loadbal_hc_weighted",_allHeadlessClientsWeighted];
-missionNamespace setVariable ["para_s_loadbal_players_weighted",_allPlayersWeighted];
