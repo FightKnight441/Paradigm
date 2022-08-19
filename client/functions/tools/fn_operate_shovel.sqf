@@ -19,5 +19,5 @@
 params ["_hitObject"];
 // systemchat "SHOVEL";
 private _building = _hitObject getVariable ["para_g_building", objNull];
-["building_on_hit", [_building]] call para_c_fnc_call_on_server;
+["building_on_hit", [_building, 0.2]] call para_c_fnc_call_on_server;
 false
