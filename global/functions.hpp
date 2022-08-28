@@ -131,6 +131,7 @@ class para_g
 	{
 		PARA_GLOBAL_PATH(\db);
 		class db_check_whitelist {};
+		class db_check_curator {};
 	};
 
 	class events
