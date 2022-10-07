@@ -176,6 +176,7 @@ class para_s
 		class init_player {};
 		class init_curators {};
 		class init_whitelist {};
+		class init_dopamine {};
 		class postinit_player {};
 	};
 
