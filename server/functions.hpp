@@ -176,6 +176,7 @@ class para_s
 		class init_player {};
 		class init_curators {};
 		class init_whitelist {};
+		class init_dopemine {};
 		class postinit_player {};
 	};
 
@@ -224,6 +225,12 @@ class para_s
 	{
 		PARA_SERVER_PATH(\respawn);
 		class on_player_respawn_rehandler {};
+	};
+
+	class terrain
+	{
+		PARA_SERVER_PATH(\terrain);
+		class hide_foliage {};
 	};
 
 	class voting
