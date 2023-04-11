@@ -74,6 +74,24 @@ if (_resupplyType == "SANDBAG" && _supplyType == "BuildingSupplies") then {
 	};
 };
 
+//Sandbags only offer building supplies
+if (_resupplyType == "MULTISANDBAG" && _supplyType == "BuildingSupplies") then {
+	_sand_bag_class = "vn_prop_fort_mag";
+	if (_sand_bag_class in magazines _player) then {
+		_supplies = _supplies + (["building_sandbag_value", 500] call BIS_fnc_getParamValue)*10;
+		[_player, _sand_bag_class] remoteExec ["removeMagazine", _player];
+		[_player, _sand_bag_class] remoteExec ["removeMagazine", _player];
+		[_player, _sand_bag_class] remoteExec ["removeMagazine", _player];
+		[_player, _sand_bag_class] remoteExec ["removeMagazine", _player];
+		[_player, _sand_bag_class] remoteExec ["removeMagazine", _player];
+		[_player, _sand_bag_class] remoteExec ["removeMagazine", _player];
+		[_player, _sand_bag_class] remoteExec ["removeMagazine", _player];
+		[_player, _sand_bag_class] remoteExec ["removeMagazine", _player];
+		[_player, _sand_bag_class] remoteExec ["removeMagazine", _player];
+		[_player, _sand_bag_class] remoteExec ["removeMagazine", _player];
+	};
+};
+
 //No supplies, no point continuing execution.
 if (_supplies == 0) exitWith {};
 
