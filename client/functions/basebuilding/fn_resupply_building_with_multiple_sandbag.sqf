@@ -36,7 +36,7 @@ if (_targetType == "") exitWith {diag_log format ["ERROR: Paradigm: Resupplying 
 
 private _supplyType = getText (missionConfigFile >> "gamemode" >> "buildables" >> _targetType >> "resupply");
 
-private _hasSupplies = {_x == "vn_prop_fort_mag"} count (magazines player) >=5;
+private _hasSupplies = {_x == "vn_prop_fort_mag"} count (magazines player) >=10;
 
 if (_supplyType != "BuildingSupplies") exitWith {
 	["TaskFailed",["",localize "STR_vn_mf_notification_desc_sandbags_not_allowed"]] call para_c_fnc_show_notification;
