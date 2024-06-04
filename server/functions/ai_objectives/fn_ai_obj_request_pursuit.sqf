@@ -46,7 +46,16 @@ _objective setVariable ["targets", _targets];
 _objective setVariable ["onTick", {
 	params ["_objective"];
 	private _lastTargetPos = getPos _objective;
-	private _targets = _objective getVariable "targets" inAreaArray [_lastTargetPos, para_s_ai_obj_pursuitRadius, para_s_ai_obj_pursuitRadius] select {alive _x};
+
+	/*
+	Filter out targets (players) that are not
+	- within specified radius of previous tracker team objective position
+	- alive
+	- outside blocked / no_harrass area markers (i.e. hanging around at the main base)
+	*/
+	private _targets = [
+		_objective getVariable "targets" inAreaArray [_lastTargetPos, para_s_ai_obj_pursuitRadius, para_s_ai_obj_pursuitRadius] select {alive _x}
+	] call para_interop_fnc_harass_filter_target_players;
 
 	//If we've lost the target, complete the pursuit.
 	if (_targets isEqualTo []) exitWith {
