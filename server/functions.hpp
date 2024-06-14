@@ -175,7 +175,7 @@ class para_s
 		class init_server { postInit = 1; };
 		class init_player {};
 		class init_curators {};
-		class init_update_curator_objects_job {};
+		class init_curators_update_objects_job {};
 		class init_whitelist {};
 		class init_dopemine {};
 		class postinit_player {};
