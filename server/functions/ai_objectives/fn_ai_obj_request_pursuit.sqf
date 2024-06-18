@@ -56,7 +56,14 @@ _objective setVariable ["onTick", {
 		[_objective] call para_s_fnc_ai_obj_finish_objective;
 	};
 
-	private _target = _targets select 0;
+	// try to focus on a target that's not incapacitated with vn_revive.
+	// want to avoid AI standing around targets that are incapacitated
+	// while other targets nearby are active.
+	// TODO: patrol around or move away if no 'up' players?
+	private _target = _targets findIf {!(_x getVariable ["vn_revive_incapacitated", false])};
+	if (_target == -1) then {
+		_target = _targets select 0;
+	};
 	
 	//Update objective position to be on the target, so it stays active.
 	_objective setPos getPos _target;
