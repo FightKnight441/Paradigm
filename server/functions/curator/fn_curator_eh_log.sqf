@@ -16,6 +16,5 @@
 		_params = [];
 	};
 
-	private _message = format ["[ZEUS] %1(%2) %3", name _curator, getPlayerUID _curator, _string];
-	diag_log format [_string, _params];
+	diag_log format ["[ZEUS] %1(%2) %3", name _curator, getPlayerUID _curator, format [_string, _params]];
 }] call CBA_fnc_addEventHandler;
