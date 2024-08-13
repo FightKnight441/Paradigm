@@ -7,5 +7,5 @@
 	_curators pushBack _curator;
 	missionNamespace setVariable ["curatorsInUI", _curators];
 
-	diag_log format["[ZEUS] Curator entered the menu: %1", _name];
+	diag_log format["[ZEUS] Curator has entered the menu: %1 (%2)", name _curator, getPlayerUID _curator];
 }] call CBA_fnc_addEventHandler;

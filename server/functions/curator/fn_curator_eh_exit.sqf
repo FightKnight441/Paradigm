@@ -6,6 +6,7 @@
 
 	_curators deleteAt ( _curators find _curator );
 	missionNamespace setVariable ["curatorsInUI", _curators];
+	publicVariable "curatorsInUI";
 
-	diag_log format["[ZEUS] Curator has exited the menu: %1", _name];
+	diag_log format["[ZEUS] Curator has exited the menu: %1 (%2)", name _curator, getPlayerUID _curator];
 }] call CBA_fnc_addEventHandler;

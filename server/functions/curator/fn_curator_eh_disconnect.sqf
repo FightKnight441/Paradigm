@@ -7,6 +7,7 @@
 
 	_curators deleteAt ( _curators find _unit );
 	missionNamespace setVariable ["curatorsOnline", _curators];
+	publicVariable "curatorsOnline";
 
 	diag_log format["[ZEUS] Curator disconnected: %1", _name];
 }] call CBA_fnc_addEventHandler;
