@@ -2,7 +2,7 @@
 	params ["_curator"];
 
 	private _curators = missionNamespace getVariable ["curatorsInUI", []];
-	if (!(_curator in _curators)) exitWith {};
+	if ((_curator in _curators)) exitWith {};
 
 	_curators pushBack _curator;
 	missionNamespace setVariable ["curatorsInUI", _curators];
