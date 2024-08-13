@@ -191,6 +191,7 @@ class para_s
 		class curator_eh_exit {};
 		class curator_eh_connect {};
 		class curator_eh_disconnect {};
+		class curator_eh_log {};
 	};
 
 	class load_balancer
