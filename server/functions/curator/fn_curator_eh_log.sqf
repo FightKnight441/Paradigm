@@ -10,7 +10,7 @@
 
 	private _curators = missionNamespace getVariable ["curatorsOnline", []];
 
-	if (_curator in _curators) exitWith {};
+	if (!(_curator in _curators)) exitWith {};
 
 	if (typeName _params != "ARRAY") then {
 		_params = [];
