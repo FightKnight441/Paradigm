@@ -185,6 +185,21 @@ para_l_placing_click_handler = (findDisplay 46) displayAddEventHandler ["MouseBu
 	};
 }];
 
+// Adding key handler for rotation by 45 degrees (R key) 
+para_l_placing_keyrotate_handler = (findDisplay 46) displayAddEventHandler ["KeyDown", { 
+	params ["_displayorcontrol", "_keyCode"]; 
+	if (_keyCode in [0x13]) then { // 0x13 is the 'R' key 
+		para_l_placing_final_rotation = para_l_placing_final_rotation + 45; 
+		if (para_l_placing_final_rotation >= 360) then { 
+			para_l_placing_final_rotation = para_l_placing_final_rotation - 360; 
+		}; 
+		// Apply the new rotation to the object 
+		if (!isNull para_l_placing_object) then { 
+			para_l_placing_object setDir para_l_placing_final_rotation; 
+		}; 
+	}; 
+}];
+
 para_l_placing_mode = 0;
 para_l_placing_center_pos = [0,0,0];
 para_l_placing_last_player_dir = getDir player;
