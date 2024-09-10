@@ -39,4 +39,9 @@ if (!isNil "para_l_placing_keyrotate_handler") then {
 	para_l_placing_keyrotate_handler = nil;
 };
 
+if (!(isNil "para_l_placing_scroll_handler")) then {
+    (findDisplay 46) displayRemoveEventHandler ["MouseZChanged", para_l_placing_scroll_handler];
+	para_l_placing_keyrotate_handler = nil;
+};
+
 false;
