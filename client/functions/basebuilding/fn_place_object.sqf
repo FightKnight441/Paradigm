@@ -185,41 +185,12 @@ para_l_placing_click_handler = (findDisplay 46) displayAddEventHandler ["MouseBu
 	};
 }];
 
-// Adding key handler for rotation by 45 degrees (R key) -Legend
+// Adding key handler for rotation by 45 degrees (R key) 
 para_l_placing_keyrotate_handler = (findDisplay 46) displayAddEventHandler ["KeyDown", { 
 	params ["_displayorcontrol", "_keyCode"]; 
 	if (!scriptDone para_l_placing_script && _keyCode in [0x13]) then { // 0x13 is the 'R' key
 		para_l_placing_final_rotation = para_l_placing_final_rotation + 45; 
 	}; 
-}];
-
-// Update the event handler for the mouse scroll wheel, only works whilst holding ALT, probably due to "if (freeLook) exitWith {};" -FightKnight
-para_l_placing_scroll_handler = (findDisplay 46) displayAddEventHandler ["MouseZChanged", {
-    params ["_displayorcontrol", "_scroll_sign"];
-
-    if (!scriptDone para_l_placing_script) then {
-        switch (para_l_placing_mode) do {
-            // Mode 0 - Adjust object position distance
-			// need to find out how to add distance that you are facing
-            case 0: {
-                private _increment_position = _scroll_sign * 1;  // Adjust distance by +- 1/2 meter
-                para_l_placing_center_pos = para_l_placing_center_pos vectorAdd [0, _increment_position, 0];
-            };
-
-            // Mode 1 - Adjust object rotation
-            case 1: {
-                private _increment_rotation = _scroll_sign * 2;  // Adjust rotation by +- 1 degrees
-                para_l_placing_final_rotation = para_l_placing_final_rotation + _increment_rotation;
-            };
-
-            // Mode 2 - Adjust object height
-            case 2: {
-                private _increment_height = _scroll_sign * .25;  // Adjust height increment by +- 1/4 meter
-                para_l_placing_height = para_l_placing_height + _increment_height;
-				para_l_placing_center_pos set [2, para_l_placing_height];
-            };
-        };
-    };
 }];
 
 para_l_placing_mode = 0;
