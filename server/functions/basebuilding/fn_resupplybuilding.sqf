@@ -103,12 +103,16 @@ private _proposedRemainingTimeSeconds = _proposedSuppliesSum / _supplyConsumptio
 private _maxTimeLimit = 7200; // max time limit a building can have, 2 hours in seconds
 
 // Check if the current lifetime would exceed the time limit
+
 if ( _proposedRemainingTimeSeconds >= _maxTimeLimit) then {
-	// if the supplies that are being added will exceed 2 hours for the building, trim the supplies so that it only reaches 2 hours max. This will still consume the item!!!
+	// if the supplies that are being added will exceed 2 hours for the building,...
+	// trim the supplies so that it only reaches 2 hours max. This will still consume the item!!!
+
 	_supplies = (_maxTimeLimit * _supplyConsumptionRate) - _currentSupplies;
 
 	// notify players that time limit has been reached and item was still consumed
-	["TaskFailed",["",localize "STR_para_build_maxtimereached"]] call para_c_fnc_show_notification;
+	// executes the notification on the client of the specific player who has done the resupply
+	[["TaskFailed",["",localize "STR_para_build_maxtimereached"]]] remoteExecCall ["para_c_fnc_show_notification", _player];
 };
 
 
