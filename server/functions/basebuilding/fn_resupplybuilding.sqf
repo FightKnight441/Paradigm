@@ -112,7 +112,7 @@ if ( _proposedRemainingTimeSeconds >= _maxTimeLimit) then {
 
 	// notify players that time limit has been reached and item was still consumed
 	// executes the notification on the client of the specific player who has done the resupply
-	[["TaskFailed",["",localize "STR_para_build_maxtimereached"]]] remoteExecCall ["para_c_fnc_show_notification", _player];
+	["TaskFailed",["",localize "STR_para_build_maxtimereached"]] remoteExecCall ["para_c_fnc_show_notification", _player];
 };
 
 
